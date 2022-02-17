@@ -20,7 +20,7 @@ class CreateSuppliersTable extends Migration
             $table->string('fisrt_name_supplier');
             $table->string('kind_supplier');
             $table->integer('age_supplier');
-            $table->string('country_suppplier');
+            $table->string('country_supplier');
             $table->string('common_supplier');
             $table->string('avenue_supplier');
             $table->integer('number_supplier');

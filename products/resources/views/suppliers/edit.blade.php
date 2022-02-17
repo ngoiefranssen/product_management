@@ -5,9 +5,9 @@
     <div class="md:grid md:grid-cols-0 md:gap-6">
         <p class="text-sm leading-center"></p>
       <div class="mt-5 md:mt-0 md:col-span-2 flex justify-center pt-14">
-        <form action="{{ route('suppliers.store') }}" method="POST" class="">
+        <form action="{{ route('suppliers.update', $supplier->id ) }}" method="POST" class="" enctype="multipart/form-data">
             @csrf
-            @method('post')
+            @method('PUT')
           <div class="shadow overflow-hidden sm:rounded-md">
             <div class="px-4 py-5 bg-white sm:p-6">
               <div class="grid grid-cols-6 gap-6">
@@ -24,9 +24,8 @@
                         <div class="text-blue-600">{{ $message }}</div>
                      @enderror
                     <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" name="role_id" id="role   _id">
-                        @foreach($roles as $role)
-                            <option value="Choississez un role correspondant">Choose a relevant role</option>
-                            <option value="{{ $role->id }}">{{ $role->name_role }}</option>
+                        @foreach($products as $product)
+                            <option value="{{ $product->id }}">{{ $product->name_product }}</option>
                         @endforeach
                     </select>
                 </div> --}}
@@ -42,10 +41,10 @@
                     @error('kind_supplier')
                         <div class="text-blue-600">{{ $message }}</div>
                     @enderror
-                  <select value="{{ $supplier->kind_supplier }}" id="kind_supplier" name="kind_supplier" autocomplete="kind_supplier" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    <option></option>
-                    <option value="F">F</option>
+                  <select id="kind_supplier" name="kind_supplier" autocomplete="kind_supplier" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option>{{ $supplier->kind_supplier }}</option>
                     <option value="M">M</option>
+                    <option value="F">F</option>
                   </select>
 
                 </div>

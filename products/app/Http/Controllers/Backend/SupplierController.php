@@ -44,19 +44,19 @@ class SupplierController extends Controller
             [
                 'name_supplier' => 'required|max:25',
                 'fisrt_name_supplier' => 'required|max:25',
-                'kind_supplier' => 'requiredS|max:5',
+                'kind_supplier' => 'required|max:5',
                 'age_supplier' => 'required',
-                'country_suppplier' => 'required',
+                'country_supplier' => 'required',
                 'common_supplier' => 'required',
                 'avenue_supplier' => 'required',
-                'number_supplier' => 'requiired',
+                'number_supplier' => 'required',
             ],
             [
                 'name_supplier.required' => '',
                 'fisrt_name_supplier.required' => '',
                 'kind_supplier.required' => '',
                 'age_supplier.required' => '',
-                'country_suppplier.required' => '',
+                'country_supplier.required' => '',
                 'common_supplier.required' => '',
                 'avenue_supplier.required' => '',
                 'number_supplier.required' => '',
@@ -64,7 +64,7 @@ class SupplierController extends Controller
 
         Supplier::create($validetedSuppliers);
 
-        return redirect()->route('supplires.index')->with('success => felicti !');
+        return redirect()->route('suppliers.index')->with('success => felicti !');
     }
 
     /**
@@ -89,11 +89,10 @@ class SupplierController extends Controller
     public function edit($id)
     {
         $supplier = Supplier::find($id);
-        // $peoples = People::get();
-        return view('suppliers.edit', compact('supplier', 'peoples'));
+        return view('suppliers.edit', compact('supplier'));
     }
 
-    /**
+    /* *
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -105,35 +104,43 @@ class SupplierController extends Controller
         $validetedUpdate_supplier = $request->validate(
             [
 
-                'name_supplier' => 'required|max:25',
-                'fisrt_name_supplier' => 'required|max:25',
-                'kind_supplier' => 'requiredS|max:5',
+                'name_supplier' => 'required',
+                'fisrt_name_supplier' => 'required',
+                'kind_supplier' => 'required',
                 'age_supplier' => 'required',
-                'country_suppplier' => 'required',
+                'country_supplier' => 'required',
                 'common_supplier' => 'required',
                 'avenue_supplier' => 'required',
-                'number_supplier' => 'requiired',
+                'number_supplier' => 'required',
             ],
-            [
-                'people_id.required' => 'modifier ou pas '
-            ]);
+            // [
+            //     'name_supplier.required' => 'error max 3 ',
+            //     'fisrt_name_supplier.required' => '',
+            //     'kind_supplier.required' => '',
+            //     'age_supplier.required' => '',
+            //     'country_supplier.required' => '',
+            //     'common_supplier.required' => '',
+            //     'avenue_supplier.required' => '',
+            //     'number_supplier.required' => '',
+            // ]
+        );
 
         Supplier::find($id)->update(
             [
-
                 'name_supplier' => $request->name_supplier,
                 'fisrt_name_supplier' => $request->fisrt_name_supplier,
                 'kind_supplier' => $request->kind_supplier,
                 'age_supplier' => $request->age_supplier,
-                'country_suppplier' => $request->country_suppplier,
+                'country_supplier' => $request->country_suppplier,
                 'common_supplier' => $request->common_supplier,
                 'avenue_supplier' => $request->avenue_supplier,
                 'number_supplier' => $request->number_supplier,
                 'created_at' => Carbon::now(),
             ]);
 
-            return redirect()->route('suppliers.index')->with('message => Feliciti !');
-    }
+    return redirect()->route('suppliers.index')->with('message', 'Feliciti !');
+
+}
 
     /**
      * Remove the specified resource from storage.

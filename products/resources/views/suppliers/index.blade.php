@@ -17,10 +17,11 @@
                             <th class="px-6 py-2 text-xs text-gray-500">First_Name</th>
                             <th class="px-6 py-2 text-xs text-gray-500">Kind</th>
                             <th class="px-6 py-2 text-xs text-gray-500">Age</th>
+                            {{-- <th class="px-6 py-2 text-xs text-gray-500">Country</th> --}}
                             <th class="px-6 py-2 text-xs text-gray-500">Common</th>
                             <th class="px-6 py-2 text-xs text-gray-500">Avenue</th>
                             <th class="px-6 py-2 text-xs text-gray-500">Number</th>
-
+                            <th class="px-6 py-2 text-xs text-gray-500">Actions</th>
                         </tr>
 
                     </thead>
@@ -39,34 +40,38 @@
                             </td>
 
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">{{ $supplier->first_name_supplier }}</div>
+                                <div class="text-sm text-gray-500">{{ $supplier->fisrt_name_supplier }}</div>
                             </td>
 
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                <div class="text-sm text-gray-500" >{{ $supplier->kind_client }}</div>
+                                <div class="text-sm text-gray-500" >{{ $supplier->kind_supplier }}</div>
                             </td>
 
                             <td class="px-6 py-4 text-sm text-gray-500">
                                 <div class="text-sm text-gray-500">{{ $supplier->age_supplier }}</div>
                             </td>
 
+                            {{-- <td class="px-6 py-4 text-sm text-gray-500">
+                                <div class="text-sm text-gray-500">{{ $supplier->country_supplier }}</div>
+                            </td> --}}
+
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                <div class="text-sm text-gray-500">{{ $supplier->common_client }}</div>
+                                <div class="text-sm text-gray-500">{{ $supplier->common_supplier }}</div>
                             </td>
 
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                <div class="text-sm text-gray-500">{{ $supplier->avenue_client }}</div>
+                                <div class="text-sm text-gray-500">{{ $supplier->avenue_supplier }}</div>
                             </td>
 
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                <div class="text-sm text-gray-500">{{ $suppllier->number_client }}</div>
+                                <div class="text-sm text-gray-500">{{ $supplier->number_supplier }}</div>
                             </td>
 
                             <td class="px-6 py-4">
 
                                 <a href="" class=""><i class="fa-solid fa-eye"></i></a>
-                                <a href="{{ route('suppliers.edit', $supplier->id ) }}" class=""><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="{{ route('deleteSupplier.delete', $supplier->id ) }}" class=""><i class="fa-solid fa-delete-right"></i></a>
+                                <a href="{{ route('suppliers.edit', $supplier->id ) }}" class=""><i class="far fa-edit"></i></a>
+                                <a href="{{ route('deleteSupplier.delete', $supplier->id ) }}" class=""><i class="fas fa-trash-alt"></i></a>
 
                                 {{-- <form action="" method="POST">
                                     @csrf
