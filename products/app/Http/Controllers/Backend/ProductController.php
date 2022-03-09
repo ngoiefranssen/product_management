@@ -45,14 +45,14 @@ class ProductController extends Controller
         $validation_prodcuts = $request->validate(
             [
                 'category_id' => 'required',
-                'supllier_id' => 'required',
+                'supplier_id' => 'required',
                 'name_product' => 'required|max:30',
-                'description_prod' => 'required|max:255',
+                'description_prod' => 'required|max:254',
                 'quantity' => 'required',
             ],
             [
                 'category_id.required' => 'mesage Error',
-                'supllier_id.required' => 'mesage Error',
+                'supplier_id.required' => 'mesage Error',
                 'name_product.required' => 'mesage Error',
                 'description_prod.required' => 'mesage Error',
                 'quantity.required' => 'Error message',
@@ -72,8 +72,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        $supplier = Supplier::find($id);
-        $categorie = Category::find($id);
+        $supplier = Supplier::get();
+        $categorie = Category::get();
 
         return view('products.show', compact('product', 'supplier', 'category'));
 ;    }
@@ -87,7 +87,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::get();
+        $suppliers = Supplier::get();
+
+        return view('products.edit', compact('product', 'categories', 'suppliers'));
     }
 
     /**
@@ -99,7 +103,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedUpdate_prodcuts = $request->validate(
+            [
+                'category_id' => 'required',
+                'supplier_id' => 'required',
+                'name_product' => 'required|max:30',
+                'description_prod' => 'required|max:254',
+                'quantity' => 'required',
+            ],
+            [
+                'category_id.required' => 'mesage Error',
+                'supplier_id.required' => 'mesage Error',
+                'name_product.required' => 'mesage Error',
+                'description_prod.required' => 'mesage Error',
+                'quantity.required' => 'Error message',
+            ]);
+
+        Product::find($id)->update(
+            [
+                'category_id' => $request->category_id,
+                'supplier_id' => $request->supplier_id,
+                'name_product' => $request->name_product,
+                'description_prod' => $request->description_prod,
+                'quantity' => $request->quantity,
+            ]);
+
+        return redirect()->route('products.index')->with('message', 'Felicite for modify !');
     }
 
     /**

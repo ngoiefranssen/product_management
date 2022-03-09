@@ -28,13 +28,14 @@
                         @foreach($products as $product)
 
                         <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">{{ product->id }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">{{ $product->id }}</td>
+
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">{{ $product->category->name_category }}</div>
+                                {{-- <div class="text-sm text-gray-900">{{ $product->categories->name_category }}</div> --}}
                             </td>
 
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">{{ $product->supplier->name_people }}</div>
+                                <div class="text-sm text-gray-900">{{ $product->supplier->name_supplier }}</div>
                             </td>
 
                             <td class="px-6 py-4">
@@ -45,13 +46,17 @@
                                 <div class="text-sm text-gray-500" >{{ $product->description_prod }}</div>
                             </td>
 
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                <div class="text-sm text-gray-500" >{{ $product->quantity }}</div>
+                            </td>
+
                             <td class="px-6 py-4">
 
                                 <a href="" class=""><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{ route('products.edit', $product->id ) }}"><i class="far fa-edit"></i></a>
                                 <a href="{{ route('deleteproduct.delete', $product->id ) }}"><i class=" fas fa-trash-alt"></i></a>
 
-                                {{-- <form action="" method="POST">
+                                {{-- <form action="" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('delete')
                                     <input type="hidden" name="id" value="">

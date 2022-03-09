@@ -25,7 +25,7 @@ class CreateAgentsTable extends Migration
             $table->string('common_agent');
             $table->string('avenue_agent');
             $table->integer('number_agent');
-            $table->string('image_agent')->nullable();
+            //$table->string('image_agent')->nullable();
             $table->timestamps();
         });
     }

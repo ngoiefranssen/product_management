@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
 use JetBrains\PhpStorm\Pure;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -12,7 +13,7 @@ class Product extends Model
 
     protected $guarded = [];
 
-    public function category()
+    public function categories()
     {
         return $this->hasMany(Category::class);
     }
@@ -22,12 +23,12 @@ class Product extends Model
         return $this->belongsTo(Supplier::class);
     }
 
-    public function purchase()
+    public function purchases()
     {
         return $this->hasMany(Purchase::class);
     }
 
-    public function stock()
+    public function stocks()
     {
         return $this->hasMany(Stock::class);
     }

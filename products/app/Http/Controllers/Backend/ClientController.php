@@ -62,7 +62,6 @@ class ClientController extends Controller
             ]);
 
         Client::create($validated_clients);
-
         return redirect()->route('clients.index')->with('success', 'Bravo !');
     }
 
@@ -75,7 +74,6 @@ class ClientController extends Controller
     public function show($id)
     {
         $client_show = Client::find($id);
-
         return view('clients.show', compact('client_show'));
     }
 
@@ -88,7 +86,6 @@ class ClientController extends Controller
     public function edit($id)
     {
         $client_edit = Client::find($id);
-
         return view('clients.edit', compact('client_edit'));
     }
 
@@ -120,6 +117,7 @@ class ClientController extends Controller
                 'country_client' => '',
                 'common_client' => '',
                 'avenue_client' => '',
+                'number_client' => '',
             ]);
 
         Client::find($id)->update(
@@ -131,6 +129,7 @@ class ClientController extends Controller
                 'country_client' => $request->country_client,
                 'common_client' => $request->common_client,
                 'avenue_client' => $request->avenue_client,
+                'number_client' => $request->number_client,
                 'created_at' => Carbon::now(),
             ]);
 

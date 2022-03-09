@@ -17,7 +17,7 @@
                         <div class="text-blue-600">{{ $message }}</div>
                     @enderror
                     <input type="text" name="name_people" id="name_people" placeholder="Enter the..." autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                  </div>
+                </div>
 
                 <div class="col-span-6 sm:col-span-3">
                     @error('role_id')
@@ -25,8 +25,8 @@
                      @enderror
                     <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" name="role_id" id="role   _id">
                         @foreach($roles as $role)
-                            <option value="Choississez un role correspondant">Choose a relevant role</option>
-                            <option value="{{ $role->id }}">{{ $role->name_role }}</option>
+                            <option value = "Choississez un role correspondant">Choose a relevant role</option>
+                            <option value = "{{ $role->id }}">{{ $role->name_role }}</option>
                         @endforeach
                     </select>
                 </div>

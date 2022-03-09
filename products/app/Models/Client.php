@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use JetBrains\PhpStorm\Pure;
+use App\Models\Register_client;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Client extends Model
 {
@@ -20,5 +21,10 @@ class Client extends Model
     public function purchases()
     {
         return $this->hasMany(Purchase::class);
+    }
+
+    public function registers_clients()
+    {
+        return $this->hasMany(Register_client::class);
     }
 }

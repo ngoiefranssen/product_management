@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class RegisterClient extends Model
+class Register_client extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guareded = [];
 
     public function client()
     {
@@ -18,6 +19,6 @@ class RegisterClient extends Model
 
     public function agent()
     {
-        return $this->belongsTo(Agent::class);
+        return $this->BelongsTo(Agent::class);
     }
 }

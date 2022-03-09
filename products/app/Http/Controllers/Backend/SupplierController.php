@@ -125,13 +125,15 @@ class SupplierController extends Controller
             // ]
         );
 
+       // dd($validetedUpdate_supplier);
+
         Supplier::find($id)->update(
             [
                 'name_supplier' => $request->name_supplier,
                 'fisrt_name_supplier' => $request->fisrt_name_supplier,
                 'kind_supplier' => $request->kind_supplier,
                 'age_supplier' => $request->age_supplier,
-                'country_supplier' => $request->country_suppplier,
+                'country_supplier' => $request->country_supplier,
                 'common_supplier' => $request->common_supplier,
                 'avenue_supplier' => $request->avenue_supplier,
                 'number_supplier' => $request->number_supplier,

@@ -23,8 +23,6 @@
 
 
 <body class="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
-
-    <!--Nav-->
     <nav class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
 
         <div class="flex flex-wrap items-center">
@@ -77,57 +75,65 @@
 
             <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
                 <ul class="list-reset flex flex-row md:flex-col py-0 md:py-3 px-1 md:px-2 text-center md:text-left">
-
                     <li class="mr-3 flex-1">
+                        <a href="" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                            <i class="fab fa-house-user md:pr-3"></i>Home
+                        </a>
+                    </li>
+                    {{-- <li class="mr-3 flex-1">
                         <a href="/roles" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
                             <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Roles</span>
                         </a>
-                    </li>
-                    <li class="mr-3 flex-1">
+                    </li> --}}
+                    {{-- <li class="mr-3 flex-1">
                         <a href="/peoples" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
                             <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Peoples</span>
                         </a>
+                    </li> --}}
+                    <li class="mr-3 flex-1">
+                        <a href="/products" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                            <i class="fab fa-product-hunt md:pr-3"></i>Products
+                        </a>
                     </li>
                     <li class="mr-3 flex-1">
-                        <a href="/categories" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
-                            <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Categories</span>
+                        <a href="/categories" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                            <i class="fab fa-brands fa-phabricator md:pr-3"></i>Categories
+                        </a>
+                    </li>
+                    <li class="mr-3 flex-1">
+                        <a href="/clients" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                            <i class="fa fa-users md:pr-3" aria-hidden="true"></i>Clients
                         </a>
                     </li>
                     <li class="mr-3 flex-1">
                         <a href="/suppliers" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
-                            <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Suppliers</span>
+                            <i class="fa fa-users md:pr-3 bg-center" aria-hidden="true"></i>Suppliers
                         </a>
                     </li>
-
-                    <li class="mr-3 flex-1">
-                        <a href="/products" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
-                            <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Products</span>
+                     <li class="mr-3 flex-1">
+                        <a href="/agents" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                            <i class="fa fa-users md:pr-3" aria-hidden="true"></i>Agents
                         </a>
                     </li>
                     <li class="mr-3 flex-1">
                         <a href="/stocks" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                            <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Stocks</span>
-                        </a>
-                    </li>
-                    <li class="mr-3 flex-1">
-                        <a href="/clients" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
-                            <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Clients</span>
+                            <i class="fa fa-socks md:pr-3"></i>Stocks
                         </a>
                     </li>
                     <li class="mr-3 flex-1">
                         <a href="/purchases" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
-                            <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Purchases</span>
+                            <i class="fab fa-cart-shopping md:pr-3"></i>Purchases
                         </a>
                     </li>
 
                     <li class="mr-3 flex-1">
                         <a href="/deliveries" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
-                            <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Deliveries</span>
+                            <i class="fab fa-delicious md:pr-3" aria-hidden="true"></i>Deliveries
                         </a>
                     </li>
                     <li class="mr-3 flex-1">
                         <a href="/register_clients" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                            <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">RegisterClients</span>
+                            <i class="fa fa-registered md:pr-3" aria-hidden="true"></i>RegisterClients</span>
                         </a>
                     </li>
                 </ul>

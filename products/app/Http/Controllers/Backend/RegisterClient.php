@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Agent;
+use App\Models\Client;
+use App\Models\Register_client;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class RegisterClient extends Controller
 {
@@ -14,9 +18,8 @@ class RegisterClient extends Controller
      */
     public function index()
     {
-        $register_clients = RegisterClient::all()->piginate(7);
-
-        return view('registers_clients.index', compact('register_clients'));
+        $register_clients = Register_Client::all();
+        return view('register_clients.index', compact('register_clients'));
     }
 
     /**
@@ -26,7 +29,11 @@ class RegisterClient extends Controller
      */
     public function create()
     {
-        //
+        $clients_create = Client::all();
+        $agents_create = Agent::all();
+
+        return view('register_clients.create', compact('clients_create','agents_create'));
+
     }
 
     /**
@@ -37,7 +44,24 @@ class RegisterClient extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data_now = Carbon::now();
+        $data_now->toDateTimeString();
+
+        $validation = $request->validate(
+            [
+                'client_id' => 'required',
+                'agent_id' => 'required',
+                'data_now' => 'required|size:30',
+            ],
+            [
+                'client_id.required' => '',
+                'agent_id.required' => '',
+                'data_now.required' => '',
+            ]);
+
+        Register_Client::create($validation);
+
+        return redirect()->route('register_clients.index')->with('message => registration was successful');
     }
 
     /**
@@ -59,7 +83,11 @@ class RegisterClient extends Controller
      */
     public function edit($id)
     {
-        //
+        $clients = Client::all();
+        $agents = Agent::all();
+        $register_client = Register_client::find($id);
+
+        return view('register_clients.edit', compact('clients', 'agents', 'register_client'));
     }
 
     /**
@@ -71,7 +99,27 @@ class RegisterClient extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $UpdateValidation = $request->validate(
+            [
+                'client_id' => 'required',
+                'agent_id' => 'required',
+                'data_now' => 'required|size:30',
+            ],
+            [
+                'client_id.required' => '',
+                'agent_id.required' => '',
+                'data_now.required' => '',
+            ]);
+
+        Register_client::find($id)->update(
+            [
+                'client_id' => $request->client_id,
+                'agent_id' => $request->agent_id,
+                'data_now' => $request->data_now,
+                'created_at' => Carbon::now(),
+            ]);
+
+        return redirect()->route('register_clients.index')->with('success => ');
     }
 
     /**
@@ -83,5 +131,13 @@ class RegisterClient extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function register_client_delete($id)
+    {
+        $deleteRegisterClient = Register_client::fin($id);
+        $deleteRegisterClient->delete();
+
+        return back()->with('success => ');
     }
 }

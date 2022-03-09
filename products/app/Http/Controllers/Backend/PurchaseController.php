@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use DateTime;
+use App\Models\Agent;
+use App\Models\Client;
+use App\Models\Product;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Date;
 
 class PurchaseController extends Controller
 {
@@ -14,7 +20,7 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        $purchases = Purchase::all()->paginate(7);
+        $purchases = Purchase::all();
         return view('purchases.index', compact('purchases'));
     }
 
@@ -25,7 +31,11 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        //
+        $products_create = Product::all();
+        $clients_create = Client::all();
+        $agents_create = Agent::all();
+
+        return view('purchases.create', compact('products_create', 'clients_create', 'agents_create'));
     }
 
     /**
@@ -36,7 +46,31 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date_purchase = Date::now();
+        //$date_exepedition = Date::now();
+        $store_purchase = $request->validate(
+            [
+                'product_id' => 'required',
+                'client_id' => 'required',
+                'agent_id' => 'required',
+                'quantity_pur' => 'required',
+                'date_purchase' => 'required',
+                'date_exepedition' => 'required',
+                'ref_sender' => 'required',
+            ],
+            [
+                'product_id.required' => '',
+                'client_id.required' => '',
+                'agent_id.required' => '',
+                'quantity_pur.required' => '',
+                'date_purchase.required' => '',
+                'date_exepedition.required' => '',
+                'ref_sender.required' => '',
+            ]);
+
+        Purchase::create($store_purchase);
+
+        return redirect()->route('purchases.index')->with('success', 'bravo !');
     }
 
     /**
@@ -82,5 +116,10 @@ class PurchaseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete_purchase($id)
+    {
+
     }
 }

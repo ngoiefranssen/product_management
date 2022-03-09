@@ -15,7 +15,7 @@ class StockController extends Controller
      */
     public function index()
     {
-        $stocks = Stock::all()->paginate(7);
+        $stocks = Stock::all();
 
         return view('stocks.index', compact('stocks'));
     }

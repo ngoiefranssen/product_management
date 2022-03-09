@@ -29,7 +29,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
+        $roles = Role::all();
         return view('peoples.create', compact('roles'));
     }
 

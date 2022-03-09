@@ -28,7 +28,7 @@ class Agent extends Model
 
     public function registers()
     {
-        return $this->hasMany(RegisterClient::class);
+        return $this->belongsTo(RegisterClient::class);
     }
 
     public function deliveries()
