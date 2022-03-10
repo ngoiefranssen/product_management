@@ -27,7 +27,7 @@
 
                     <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" name="category_id" id="category_id">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ $product->category->id == $category->id ? 'select' : ''}}>{{ $category->name_category }}</option>
+                            <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'select' : ''}}>{{ $category->name_category }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -37,7 +37,7 @@
                      @enderror
                     <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" name="supplier_id" id="supplier_id">
                         @foreach($suppliers as $supplier)
-                            <option value="{{ $supplier->id }}" {{ $product->supplier->id == $supplier->id ? 'selected' : ''}}>{{ $supplier->name_supplier }}</option>
+                            <option value="{{ $supplier->id }}" {{ $product->supplier_id == $supplier->id ? 'select' : ''}}>{{ $supplier->name_supplier }}</option>
                         @endforeach
                     </select>
                 </div>
