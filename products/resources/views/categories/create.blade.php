@@ -20,7 +20,7 @@
             @csrf
             @method('post')
             <div class="mb-4 relative">
-                @error('description_cat')
+                @error('name_category')
                     <div class="text-blue-600">{{ $success }}</div>
                 @enderror
                 <input id="name_category" name="name_category" placeholder="Name category" class="w-full rounded px-3 border border-gray-500 pt-5 pb-2 focus:outline-none input active:outline-none" type="text" autofocus>
@@ -32,7 +32,7 @@
                 @enderror
                 <div class="mb-4 xl:w-100">
                     <textarea class=" form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0
-                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="description_prod" type="text" name="description_prod" rows="3" placeholder="Your description...."></textarea>
+                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="description_cat" type="text" name="description_cat" rows="3" placeholder="Your description...."></textarea>
                 </div>
             </div>
 

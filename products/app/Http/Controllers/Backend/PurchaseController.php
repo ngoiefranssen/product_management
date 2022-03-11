@@ -46,7 +46,7 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        $date_purchase = Date::now();
+        //$date_purchase = Date::now();
         //$date_exepedition = Date::now();
         $store_purchase = $request->validate(
             [
@@ -59,18 +59,18 @@ class PurchaseController extends Controller
                 'ref_sender' => 'required',
             ],
             [
-                'product_id.required' => '',
-                'client_id.required' => '',
-                'agent_id.required' => '',
-                'quantity_pur.required' => '',
-                'date_purchase.required' => '',
-                'date_exepedition.required' => '',
-                'ref_sender.required' => '',
+                'product_id.required' => 'please complete the product field in front !',
+                'client_id.required' => 'please complete the customer field in front !',
+                'agent_id.required' => 'please complete the agent field in front !',
+                'quantity_pur.required' => 'please complete the quantity field in front!',
+                'date_purchase.required' => 'the date of purchase(s)',
+                'date_exepedition.required' => 'the day of shipment',
+                'ref_sender.required' => 'Enter the field in front of you reference sender',
             ]);
 
         Purchase::create($store_purchase);
 
-        return redirect()->route('purchases.index')->with('success', 'bravo !');
+        return redirect()->route('purchases.index')->with('success', 'Well done ! your purchases have been made successfully');
     }
 
     /**
@@ -120,6 +120,9 @@ class PurchaseController extends Controller
 
     public function delete_purchase($id)
     {
+        $delete_purchase = Purchase::find($id);
+        $delete_purchase->delete();
 
+        return back()->with('delete', 'your purchase has been successfully deleted');
     }
 }

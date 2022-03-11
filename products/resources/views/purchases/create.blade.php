@@ -43,13 +43,13 @@
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                     @error('quantity_pur')
-                        <div class="text-blue-600">{{ $message }}</div>
+                        <div class="text-blue-600">{{ $success }}</div>
                     @enderror
                   <input type="number" name="quantity_pur" id="quantity_pur" placeholder="Enter Quantity...." autocomplete="quantity_pur" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="col-span-6">
                     @error('ref_sender')
-                        <div class="text-blue-600">{{ $message }}</div>
+                        <div class="text-blue-600">{{ $success }}</div>
                     @enderror
                   <input type="text" name="ref_sender" id="ref_sender" placeholder="Enter ref_sender...." autocomplete="ref_sender" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
