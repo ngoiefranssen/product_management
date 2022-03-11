@@ -13,9 +13,9 @@ class Product extends Model
 
     protected $guarded = [];
 
-    public function categories()
+    public function category()
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function supplier()

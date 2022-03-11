@@ -31,7 +31,7 @@
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $product->id }}</td>
 
                             <td class="px-6 py-4">
-                                {{-- <div class="text-sm text-gray-900">{{ $product->categories->name_category }}</div> --}}
+                                <div class="text-sm text-gray-900">{{ $product->category->name_category }}</div>
                             </td>
 
                             <td class="px-6 py-4">
