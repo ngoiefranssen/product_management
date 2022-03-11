@@ -48,14 +48,15 @@ class PurchaseController extends Controller
     {
         //$date_purchase = Date::now();
         //$date_exepedition = Date::now();
+
         $store_purchase = $request->validate(
             [
                 'product_id' => 'required',
                 'client_id' => 'required',
                 'agent_id' => 'required',
                 'quantity_pur' => 'required',
-                'date_purchase' => 'required',
-                'date_exepedition' => 'required',
+                'date_purchase' => 'required|date|after:tomorrow',
+                'date_exepedition' => 'required|date|after:tomorrow',
                 'ref_sender' => 'required',
             ],
             [
@@ -71,6 +72,7 @@ class PurchaseController extends Controller
         Purchase::create($store_purchase);
 
         return redirect()->route('purchases.index')->with('success', 'Well done ! your purchases have been made successfully');
+
     }
 
     /**
