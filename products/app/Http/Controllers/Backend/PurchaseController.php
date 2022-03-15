@@ -30,7 +30,7 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        $products_create = Product::all();
+        $products_create = Product::get();
         $clients_create = Client::all();
         $agents_create = Agent::all();
 

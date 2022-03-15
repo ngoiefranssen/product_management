@@ -44,14 +44,14 @@ class RegisterClient extends Controller
      */
     public function store(Request $request)
     {
-        $data_now = Carbon::now();
-        $data_now->toDateTimeString();
+        // $data_now = Carbon::now();
+        // $data_now->toDateTimeString();
 
         $validation = $request->validate(
             [
                 'client_id' => 'required',
                 'agent_id' => 'required',
-                'data_now' => 'required|size:30',
+                'data_now' => 'required',
             ],
             [
                 'client_id.required' => '',
@@ -72,7 +72,7 @@ class RegisterClient extends Controller
      */
     public function show($id)
     {
-        //
+        return view('register_clients.show');
     }
 
     /**
@@ -83,11 +83,11 @@ class RegisterClient extends Controller
      */
     public function edit($id)
     {
-        $clients = Client::all();
-        $agents = Agent::all();
-        $register_client = Register_client::find($id);
+        $clients_edit = Client::all();
+        $agents_edit = Agent::all();
+        $register_client_edit = Register_client::find($id);
 
-        return view('register_clients.edit', compact('clients', 'agents', 'register_client'));
+        return view('register_clients.edit', compact('clients_edit', 'agents_edit', 'register_client_edit'));
     }
 
     /**
