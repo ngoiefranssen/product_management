@@ -79,7 +79,12 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
-        //
+        // $purchase_show = Purchase::find($id);
+        // $products_show = Product::all();
+        // $clients_show = Client::all();
+        // $agents_show = Agent::all();
+
+    return view('purchases.show' /*, compact('purchase_show', 'products_show', 'clients_show', 'agents_show')*/);
     }
 
     /**
@@ -90,7 +95,12 @@ class PurchaseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $purchase_edit = Purchase::find($id);
+        $clients_edit = Client::all();
+        $products_edit = Product::all();
+        $agents_edit = Agent::all();
+
+        return view('purchases', compact('purchase'));
     }
 
     /**
@@ -102,7 +112,38 @@ class PurchaseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validetedUpdate = $request->validate(
+            [
+                'product_id' => 'required',
+                'client_id' => 'required',
+                'agent_id' => 'required',
+                'quantity_pur' => 'required',
+                'date_purchase' => 'required',
+                'date_expedition' => 'required',
+                'ref_sender' => 'required',
+            ],
+            [
+                'product_id.required' => '',
+                'client_id.required' => '',
+                'agent_id.required' => '',
+                'quantity_pur.required' => '',
+                'date_purchase.required' => '',
+                'date_expedition.required' => '',
+                'ref_sender.required' => '',
+            ]);
+
+        Purchase::find($id)->update(
+            [
+                'product_id' => $request->product_id,
+                'client_id' => $request->client_id,
+                'agent_id' => $request->agent_id,
+                'quantity_pur' => $request->quantity_pur,
+                'date_ppurchase' =>$request->date_purchase,
+                'date_expedition' => $request->date_expedition,
+                'ref_sender' => $request->ref_sender,
+            ]);
+
+        return redirect()->route('ppurchases.index')->with('message => ');
     }
 
     /**
