@@ -19,7 +19,7 @@ class CreatePurchasesTable extends Migration
             $table->foreignId('client_id')->constrained()->cascadeOnDelete();
             $table->foreignId('agent_id')->constrained()->cascadeOnDelete();
             $table->integer('quantity_pur');
-            $table->timestamp('date_purchase', $datenow = 0)->useCurrent();
+            $table->timestamp('date_purchase')->useCurrent();
             $table->timestamp('date_expedition')->useCurrent();
             $table->string('ref_sender');
             $table->timestamps();

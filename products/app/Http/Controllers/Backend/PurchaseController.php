@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use DateTime;
 use App\Models\Agent;
 use App\Models\Client;
 use App\Models\Product;
@@ -46,17 +45,14 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //$date_purchase = Date::now();
-        //$date_exepedition = Date::now();
-
         $store_purchase = $request->validate(
             [
                 'product_id' => 'required',
                 'client_id' => 'required',
                 'agent_id' => 'required',
                 'quantity_pur' => 'required',
-                'date_purchase' => 'required|date|after:tomorrow',
-                'date_exepedition' => 'required|date|after:tomorrow',
+                'date_purchase' => 'required',
+                'date_expedition' => 'required',
                 'ref_sender' => 'required',
             ],
             [
@@ -64,8 +60,8 @@ class PurchaseController extends Controller
                 'client_id.required' => 'please complete the customer field in front !',
                 'agent_id.required' => 'please complete the agent field in front !',
                 'quantity_pur.required' => 'please complete the quantity field in front!',
-                'date_purchase.required' => 'the date of purchase(s)',
-                'date_exepedition.required' => 'the day of shipment',
+                'date_purchase.required' =>'',
+                'date_expedition.required' => '',
                 'ref_sender.required' => 'Enter the field in front of you reference sender',
             ]);
 
