@@ -28,7 +28,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        $clients = Client::all();
+        $clients = Client::get();
         return view('agents.create', compact('clients'));
     }
 
